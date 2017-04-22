@@ -9,6 +9,7 @@ CFLAGS+=-std=gnu99 -O2 -g -MMD -Wall				\
 	-D_GNU_SOURCE						\
 	-D_LGPL_SOURCE						\
 	-DRCU_MEMBARRIER					\
+	-DFUSE_USE_VERSION=26					\
 	-DNO_BCACHE_CHARDEV					\
 	-DNO_BCACHE_FS						\
 	-DNO_BCACHE_SYSFS					\
@@ -33,7 +34,7 @@ ifdef D
 	CFLAGS+=-Werror
 endif
 
-PKGCONFIG_LIBS="blkid uuid liburcu libsodium zlib"
+PKGCONFIG_LIBS="blkid uuid liburcu libsodium zlib fuse"
 CFLAGS+=`pkg-config --cflags	${PKGCONFIG_LIBS}`
 LDLIBS+=`pkg-config --libs	${PKGCONFIG_LIBS}` 		\
 	-lm -lpthread -lrt -lscrypt -lkeyutils -laio
